@@ -1,0 +1,11 @@
+# dependencies
+/dist
+/node_modules
+output
+output_resource
+
+src/types/intl.ts
+
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
