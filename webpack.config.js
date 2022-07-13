@@ -8,10 +8,12 @@ const json5 = require("json5");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 module.exports = {
+  mode: "development",
   entry: {
     index: "./src/index.js",
-    print: "./src/print.js",
-  }, //项目入口文件
+    another: "./src/another-module.js",
+  },
+  //项目入口文件
   //输出
   output: {
     filename: "[name].bundle.js", //打包后js的名称
@@ -70,7 +72,9 @@ module.exports = {
     static: "./dist",
   },
   optimization: {
-    runtimeChunk: "single",
+    splitChunks: {
+      chunks: "all",
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({ title: "Development" }),
