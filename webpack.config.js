@@ -8,12 +8,16 @@ const json5 = require("json5");
 // const BundleAnalyzerPlugin =
 //   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 module.exports = {
-  entry: "./src/index.js", //项目入口文件
+  entry: {
+    index: "./src/index.js",
+    print: "./src/print.js",
+  }, //项目入口文件
   //输出
   output: {
-    filename: "bundle.js", //打包后js的名称
+    filename: "[name].bundle.js", //打包后js的名称
     path: resolve(__dirname, "dist"), //打包输出到当前路径的build文件夹中
-    // publicPath: "/", //注意此处，是服务器下资源引用的根目录
+    clean: true,
+    publicPath: "/", //注意此处，是服务器下资源引用的根目录
   },
   //loader配置规则
   module: {
@@ -61,8 +65,15 @@ module.exports = {
       },
     ],
   },
+  devtool: "inline-source-map",
+  devServer: {
+    static: "./dist",
+  },
+  optimization: {
+    runtimeChunk: "single",
+  },
   plugins: [
-    // new HtmlWebpackPlugin({ template: "./index.html" }),
+    new HtmlWebpackPlugin({ title: "Development" }),
     // new BundleAnalyzerPlugin(),
   ], //插件配置
   mode: "development", //开发模式(开发模式和生产模式),
