@@ -11,7 +11,6 @@ module.exports = {
   mode: "development",
   entry: {
     index: "./src/index.js",
-    another: "./src/another-module.js",
   },
   //项目入口文件
   //输出
@@ -71,11 +70,7 @@ module.exports = {
   devServer: {
     static: "./dist",
   },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
-  },
+
   plugins: [
     new HtmlWebpackPlugin({ title: "Development" }),
     // new BundleAnalyzerPlugin(),
